@@ -23,7 +23,7 @@ def split_dataset(dataset, criterion, fold):
     cname = "cvset_{}".format(criterion)
     cv = StratifiedKFold(dataset[criterion], fold)
     for n, (training_set, validation_set) in enumerate(cv):
-        dataset.ix[validation_set, cname] = n
+        dataset.loc[validation_set, cname] = n
 
     dataset.loc[pandas.isnull(dataset[criterion]), cname] = np.nan
 
